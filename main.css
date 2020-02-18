@@ -1,0 +1,44 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+#header{
+    height: 10%;
+    background-color: whitesmoke;
+}
+#map{
+    z-index: 9999;
+    height: 290px;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 50%;
+}
+
+.btn {
+    background-color: lightblue;
+    padding: 5px;
+    font-weight: 200;   
+}
+
+#shrink_map{
+    margin-left: 100px;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background-color: yellowgreen;
+}
+
+
+#score {
+    min-width: 100px;
+    
+}
+
+#pano {
+    float: left;
+    height: 90%;
+    width: 100%;
+}

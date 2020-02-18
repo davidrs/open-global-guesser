@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+
+    <div id="header">
+        Score: <span id='score'>0</span> 
+        Distance: <span id='Distance'>0</span>
+        Round: <span id='round'>0</span>
+        <span id='submit' class='btn'>Submit</span>
+        <span id='next-round'  class='btn'>Next Round</span>
+        <span id='reset-pano'  class='btn'>Reset</span>
+
+        <span id='shrink_map' class='btn'>-</span>
+        <span id='grow_map' class='btn'>+</span>
+        <div id='map'></div>
+    </div>
+    <div id='pano'></div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="jquery-3.4.1.min.js"><\/script>')</script>
+
+  <script src="config.js"></script>
+  <script src="main.js"></script>
+  <script>
+    document.write('<script src="https://maps.googleapis.com/maps/api/js?key='+appConfig.API_KEY+'&callback=initialize"><\/script>')
+  </script>
+</body>
+
+</html>
