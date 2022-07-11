@@ -13,6 +13,8 @@ let round_count = 1;
 // TODO: snapshot to valid location THEN update start_loication.
 let roundLocation;
 
+const DEFAULT_LOCATION = {lat: 38.56, lng: -121.503 };
+
 const GLOBE_RADIUS = 3958; // Radius of the Earth in miles
 
 function calculateDistance(latLng1, latLng2){
@@ -70,10 +72,19 @@ function generateNewLocation(){
     //todoBroadway, New York
 
     var streetViewService = new google.maps.StreetViewService();
-    var STREETVIEW_MAX_DISTANCE = 1000000;
+    // var STREETVIEW_MAX_DISTANCE = 1000000;
+    var STREETVIEW_MAX_DISTANCE = 100; //sacramento
+
+    // Normal
+    // var latLng = new google.maps.LatLng(
+    //     (Math.random()*125) - 50,  // 75 to -50 is good range
+    //     (Math.random()*360) - 180);
+
+    // Sacramento
     var latLng = new google.maps.LatLng(
-        (Math.random()*125) - 50,  // 75 to -50 is good range
-        (Math.random()*360) - 180);
+        38.53 + (Math.random()*0.06), 
+        -121.503 + (Math.random() * 0.05));
+
     console.log('latLng', latLng.lat(), latLng.lng())
 
     // TODO; make rough polygons for oceans, then retry if inside them.
@@ -117,12 +128,15 @@ function initialize() {
 
     $('#next-round').click(()=>{
         correct_marker.setMap(null);
-        marker.setPosition({lat: 0, lng: 0});
+        marker.setPosition(DEFAULT_LOCATION);
         round_count++;
         $('#round').text(round_count);
         generateNewLocation();
-        map.setCenter({lat: 0, lng: 0});
-        map.setZoom(1);
+        // map.setZoom(1);
+
+        map.setCenter(DEFAULT_LOCATION);
+        map.setZoom(12);
+
         $('#submit').show();
         $('#next-round').hide();
     });
@@ -146,12 +160,13 @@ function initialize() {
 
     // Makes map and street view
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 0, lng: 0},
-      zoom: 1
+        center: DEFAULT_LOCATION,
+    //   zoom: 1
+        zoom: 12
     });
 
     marker = new google.maps.Marker({
-        position: {lat: 0, lng: 0},
+        position: DEFAULT_LOCATION,
         map: map,
       });
 
@@ -168,6 +183,7 @@ function initialize() {
         document.getElementById('pano'), {
             addressControl: false,
             streetViewControl: true,
+            // showRoadLabels: false,
           position: {lat:0,lng:0},
           pov: {
             heading: 34,
